@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { elementAt } from 'rxjs';
 
 
 interface IModal{
@@ -17,12 +18,19 @@ export class ModalService {
   
   constructor() { }
 
+
   register(id:string){
     this.modals.push(
       {
         id,
         visible:false
       }
+    )
+  }
+
+  unregister(id:string){
+    this.modals = this.modals.filter(
+      element => element.id !== id
     )
   }
   
